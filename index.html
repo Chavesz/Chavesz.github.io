@@ -281,11 +281,17 @@ const P=[
 {t:"CoinClass",s:"Projeto próprio",a:"#16a34a",b:"#1e3a8a",d:"Gerenciador financeiro pessoal.",tags:["Vue","Node.js"],gh:"https://github.com/Chavesz/coinclass"},
 {t:"FightZone",s:"Acadêmico",a:"#ea580c",b:"#450a0a",d:"Gestão de alunos e inscrição em modalidades de artes marciais, em PHP puro com padrão MVC.",tags:["PHP","MVC","MySQL"],gh:"https://github.com/Chavesz/FightZone"}];
 // certificados: adicione {t,i,y,img} com imagem em img/certs/
-const CERT=[{t:"Técnico em Manutenção e Suporte em Informática",i:"Formação técnica",y:"Concluído"}];
+const CERT=[
+{t:"AI Fluency: Framework & Foundations",i:"Anthropic",y:"out. 2026",img:"img/certs/anthropic.jpg",url:"https://verify.skilljar.com/c/4x33a5y6cfw5"},
+{t:"Soluções de IA no GitHub",i:"Fundação Bradesco",y:"mai. 2025",code:"09751E3C-3549-4BAC-A34F-36F9853BAFBB"},
+{t:"Pensamento Computacional",i:"Fundação Bradesco",y:"mai. 2025",code:"207467C4-9546-4B37-9A0D-A5FAC0F0F3C5"},
+{t:"Vue JS 2: O Guia Completo (Vue Router & Vuex)",i:"Udemy",y:"ago. 2024",img:"img/certs/udemy-vue.jpg",url:"https://www.udemy.com/certificate/UC-6aaa2786-4a36-4150-8ecd-234cb0d3fb3b/"},
+{t:"Lógica de Programação e Estruturas de Dados com JavaScript",i:"Udemy",y:"mai. 2021",img:"img/certs/udemy-logica.jpg",url:"https://www.udemy.com/certificate/UC-ea694ed3-3e25-424d-a25f-c66c26f8c308/"},
+{t:"Técnico em Manutenção e Suporte em Informática",i:"Formação técnica",y:"Concluído"}];
 
 /* ---------- render ---------- */
 $('#ptrack').innerHTML=P.map((p,i)=>`<article class="pc" data-cur="${p.site?'ABRIR':p.gh?'CÓDIGO':'VER'}"><div class="img">${p.img?`<img src="${p.img}" alt="Tela do ${p.t}" loading="lazy">`:`<div class="gen" style="--a:${p.a};--b:${p.b}"><b>${p.t}</b></div>`}</div><div class="body"><span class="idx">${String(i+1).padStart(2,'0')}</span><div><h3>${p.t}</h3><p>${p.d}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="links">${p.site?`<a href="${p.site}" target="_blank" rel="noopener">Ver site ↗</a>`:''}${p.gh?`<a href="${p.gh}" target="_blank" rel="noopener">GitHub ↗</a>`:''}${p.code?`<small>${p.code}</small>`:''}</div></div><span class="st ${p.s=='No ar'?'live':''}">${p.s=='No ar'?'● ':''}${p.s}</span></div></article>`).join('')+`<div class="pend"><span class="mono">e tem mais</span><h3>Mais código<br>no GitHub.</h3><a href="https://github.com/Chavesz" target="_blank" rel="noopener">github.com/Chavesz ↗</a></div>`;
-$('#certs').innerHTML=CERT.map(c=>`<div class="ce reveal"><div class="ci">${c.img?`<img src="${c.img}" alt="${c.t}">`:`<div class="seal">✦</div>`}</div><div class="cb"><span class="mono">${c.i}</span><h4>${c.t}</h4><p>${c.y}</p></div></div>`).join('');
+$('#certs').innerHTML=CERT.map(c=>{const tag=c.url?'a':'div',at=c.url?` href="${c.url}" target="_blank" rel="noopener" data-cur="VERIFICAR"`:'';return `<${tag}${at} class="ce reveal"><div class="ci">${c.img?`<img src="${c.img}" alt="Certificado ${c.t}" loading="lazy">`:`<div class="seal">${c.i[0]}</div>`}</div><div class="cb"><span class="mono">${c.i} · ${c.y}</span><h4>${c.t}</h4><p>${c.url?'Verificar credencial ↗':c.code?'Credencial '+c.code.slice(0,8)+'…':''}</p></div></${tag}>`}).join('');
 const mw=["Full Stack","Node.js","Vue","React","Next.js","IA aplicada","Supabase","SOLID","MongoDB","TypeScript"];
 $('#mq').innerHTML=[...mw,...mw].map(w=>`<span>${w}</span><i>✦</i>`).join('');
 // split hero letters & manifesto words
