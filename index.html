@@ -162,6 +162,30 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
 .toast.show{transform:translate(-50%,0)}
 
 @media(min-width:701px){.pc .img{aspect-ratio:auto;height:min(48vh,440px)}.pw{min-height:100vh;display:flex;align-items:center}}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden;margin-top:clamp(50px,8vh,90px)}
+.fact{background:var(--bg);padding:26px}.fact b{display:block;font-family:Unbounded;font-weight:800;font-size:clamp(26px,3vw,40px);letter-spacing:-.04em;line-height:1;margin:12px 0 6px}.fact span{color:var(--mute);font-size:14px}
+.tl{display:grid;border-top:1px solid var(--line)}
+.job{display:grid;grid-template-columns:260px 1fr;gap:30px;padding:clamp(26px,4vh,40px) 0;border-bottom:1px solid var(--line);transition:background .3s}
+.job:hover{background:linear-gradient(90deg,rgba(139,92,246,.06),transparent)}
+.job .when{font:500 12px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.1em;color:var(--acc2)}
+.job .at{display:block;margin-top:8px;color:var(--mute);font-size:14px}
+.job h3{font-family:Unbounded;font-weight:700;font-size:clamp(20px,2.2vw,30px);letter-spacing:-.03em;line-height:1.1}
+.job ul{margin-top:14px;padding-left:18px;color:var(--mute);display:grid;gap:6px}
+.job li::marker{color:var(--acc)}
+.job .tech{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}.job .tech span{font:500 11px 'JetBrains Mono';color:var(--acc2);border:1px solid rgba(196,181,253,.2);border-radius:6px;padding:3px 8px}
+.sk li{display:inline-flex;align-items:center;gap:8px}.sk li img{width:18px;height:18px}
+.subh{display:flex;justify-content:space-between;align-items:end;margin:clamp(70px,10vh,110px) 0 28px;gap:16px;flex-wrap:wrap}
+.subh h3{font-family:Unbounded;font-weight:800;font-size:clamp(28px,3.6vw,48px);letter-spacing:-.04em}
+.allp{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ap{border:1px solid var(--line);border-radius:22px;padding:24px;background:var(--s1);display:flex;flex-direction:column;gap:10px;transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .3s;min-height:230px}
+.ap:hover{transform:translateY(-6px);border-color:rgba(196,181,253,.35)}
+.ap .tp{font:500 11px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.08em;color:var(--acc2)}
+.ap h4{font-family:Unbounded;font-weight:700;font-size:20px;letter-spacing:-.03em}
+.ap p{color:var(--mute);font-size:14.5px;flex:1}
+.ap a{font-weight:600;font-size:14px;border-bottom:1px solid var(--acc2);align-self:flex-start}
+.ap small{color:var(--mute);font-size:13px}
+@media(max-width:1000px){.facts{grid-template-columns:1fr 1fr}.job{grid-template-columns:1fr;gap:10px}.allp{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.allp{grid-template-columns:1fr}.fact{padding:20px}}
 @media(max-width:1000px){
  .nav ul{display:none}
  .sh{grid-template-columns:1fr}
@@ -192,7 +216,7 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
 
 <nav class="nav">
  <a class="logo" href="#top">KC.</a>
- <ul><li><a href="#formacao">Formação</a></li><li><a href="#skills">Skills</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#certificados">Certificados</a></li></ul>
+ <ul><li><a href="#formacao">Formação</a></li><li><a href="#carreira">Carreira</a></li><li><a href="#skills">Skills</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#certificados">Certificados</a></li></ul>
  <a class="cta" href="#contato">Contato</a>
 </nav>
 
@@ -210,8 +234,14 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
 </header>
 
 <section class="manifesto"><div class="wrap">
- <span class="mono">(01) — manifesto</span>
+ <span class="mono">(01) — sobre</span>
  <p id="mani" style="margin-top:28px">Eu não espero o diploma para construir. Transformo problemas reais de <em>pequenos negócios</em> em software: achar clientes com <em>IA</em>, organizar agendas, receber pedidos, estudar para concursos. Código limpo, interface que qualquer um entende e foco em <em>resultado</em>.</p>
+ <div class="facts">
+  <div class="fact reveal"><span class="mono">formação</span><b>ADS</b><span>Análise e Desenvolvimento de Sistemas, reta final</span></div>
+  <div class="fact reveal"><span class="mono">foco</span><b>Full stack</b><span>Sistemas web, APIs e IA aplicada</span></div>
+  <div class="fact reveal"><span class="mono">projetos</span><b id="fproj">12</b><span>no portfólio, do zero ao deploy</span></div>
+  <div class="fact reveal"><span class="mono">certificados</span><b id="fcert">6</b><span>Anthropic, Fundação Bradesco, Udemy e técnico</span></div>
+ </div>
 </div></section>
 
 <div class="mq" aria-hidden="true"><div class="tr" id="mq"></div></div>
@@ -225,13 +255,22 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
   </div>
   <div class="edu-side">
    <div class="edu-c reveal"><span class="mono">formação técnica</span><h4>Técnico em Manutenção e Suporte em Informática</h4><p>Hardware, redes e suporte, inclusive em ambiente escolar.</p></div>
-   <div class="edu-c reveal"><span class="mono">experiência</span><h4>Estágio em desenvolvimento</h4><p>Desenvolvimento web com Node.js, Vue.js, LoopBack e MongoDB.</p></div>
+   <div class="edu-c reveal"><span class="mono">aprendizado contínuo</span><h4>IA, Vue e lógica de programação</h4><p>Certificações da Anthropic, Fundação Bradesco e Udemy. Veja na seção de certificados.</p></div>
   </div>
  </div>
 </div></section>
 
+<section class="sec" id="carreira" style="padding-top:0"><div class="wrap">
+ <div class="sh"><span class="mono">(03) — carreira</span><h2 class="split"><span class="ln"><span>Experiência</span></span><span class="ln"><span><em>na prática.</em></span></span></h2></div>
+ <div class="tl">
+  <div class="job reveal"><div><span class="when">atual</span><span class="at">Karun Tech · projetos próprios</span></div><div><h3>Desenvolvedor Full Stack</h3><ul><li>Criação de produtos SaaS para pequenos negócios: prospecção com IA, agendamento, delivery e gestão de academias</li><li>Front-end e back-end com Next.js, TypeScript e Supabase (PostgreSQL)</li><li>Integração com IA (Gemini) e Google Places para gerar sites e encontrar clientes</li><li>Deploy, domínio e publicação na Vercel</li></ul><div class="tech"><span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>PostgreSQL</span><span>Gemini</span><span>Vercel</span></div></div></div>
+  <div class="job reveal"><div><span class="when">estágio</span><span class="at">Desenvolvimento web</span></div><div><h3>Estagiário de Desenvolvimento</h3><ul><li>Desenvolvimento de aplicações web com Vue.js e Node.js</li><li>APIs com LoopBack e banco de dados MongoDB</li><li>Automação de mensagens com a API do WhatsApp</li></ul><div class="tech"><span>Vue.js</span><span>Node.js</span><span>LoopBack</span><span>MongoDB</span></div></div></div>
+  <div class="job reveal"><div><span class="when">técnico</span><span class="at">Suporte em informática</span></div><div><h3>Manutenção e Suporte</h3><ul><li>Manutenção de computadores e redes, inclusive em ambiente escolar</li><li>Atendimento e resolução de problemas de hardware e software</li></ul><div class="tech"><span>Hardware</span><span>Redes</span><span>Suporte</span></div></div></div>
+ </div>
+</div></section>
+
 <section class="sec" id="skills" style="padding-top:0"><div class="wrap">
- <div class="sh"><span class="mono">(03) — skills</span><h2 class="split"><span class="ln"><span>O que eu</span></span><span class="ln"><span><em>domino.</em></span></span></h2></div>
+ <div class="sh"><span class="mono">(04) — skills</span><h2 class="split"><span class="ln"><span>O que eu</span></span><span class="ln"><span><em>domino.</em></span></span></h2></div>
  <div class="skills">
   <div class="sk reveal"><span class="n">01</span><h3>Front-end</h3><ul><li>JavaScript</li><li>TypeScript</li><li>Vue 3</li><li>React</li><li>Next.js</li><li>Tailwind</li><li>Pinia</li><li>HTML/CSS</li></ul></div>
   <div class="sk reveal"><span class="n">02</span><h3>Back-end</h3><ul><li>Node.js</li><li>LoopBack</li><li>APIs REST</li><li>PHP (MVC)</li><li>Python</li><li>WhatsApp API</li><li>C</li></ul></div>
@@ -241,17 +280,18 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
 </div></section>
 
 <section class="sec" id="projetos" style="padding-bottom:0">
- <div class="wrap"><div class="sh"><span class="mono">(04) — projetos</span><h2 class="split"><span class="ln"><span>Coisas que</span></span><span class="ln"><span><em>eu construí.</em></span></span></h2></div></div>
+ <div class="wrap"><div class="sh"><span class="mono">(05) — projetos</span><h2 class="split"><span class="ln"><span>Coisas que</span></span><span class="ln"><span><em>eu construí.</em></span></span></h2></div></div>
  <div class="pw" id="pw"><div class="pcount mono" id="pcount"></div><div class="ptrack" id="ptrack"></div></div>
+ <div class="wrap"><div class="subh"><h3>Todos os projetos</h3><span class="mono" id="allc"></span></div><div class="allp" id="allp"></div></div>
 </section>
 
 <section class="sec" id="certificados"><div class="wrap">
- <div class="sh"><span class="mono">(05) — certificados</span><h2 class="split"><span class="ln"><span>Formação</span></span><span class="ln"><span><em>comprovada.</em></span></span></h2></div>
+ <div class="sh"><span class="mono">(06) — certificados</span><h2 class="split"><span class="ln"><span>Formação</span></span><span class="ln"><span><em>comprovada.</em></span></span></h2></div>
  <div class="certs" id="certs"></div>
 </div></section>
 
 <section class="contact" id="contato"><div class="wrap">
- <span class="mono">(06) — contato</span>
+ <span class="mono">(07) — contato</span>
  <h2 class="big split" style="margin-top:24px"><span class="ln"><span>Bora</span></span><span class="ln"><span><em>construir?</em></span></span></h2>
  <button class="mailbtn mag" id="copy" data-cur="COPIAR">kauachaves50@gmail.com <small>COPIAR</small></button>
  <div class="socials"><a class="mag" href="https://www.linkedin.com/in/kau%C3%A3-chaves-42879b263/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="mag" href="https://github.com/Chavesz" target="_blank" rel="noopener">GitHub ↗</a></div>
@@ -290,7 +330,11 @@ const CERT=[
 {t:"Técnico em Manutenção e Suporte em Informática",i:"Formação técnica",y:"Concluído"}];
 
 /* ---------- render ---------- */
-$('#ptrack').innerHTML=P.map((p,i)=>`<article class="pc" data-cur="${p.site?'ABRIR':p.gh?'CÓDIGO':'VER'}"><div class="img">${p.img?`<img src="${p.img}" alt="Tela do ${p.t}" loading="lazy">`:`<div class="gen" style="--a:${p.a};--b:${p.b}"><b>${p.t}</b></div>`}</div><div class="body"><span class="idx">${String(i+1).padStart(2,'0')}</span><div><h3>${p.t}</h3><p>${p.d}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="links">${p.site?`<a href="${p.site}" target="_blank" rel="noopener">Ver site ↗</a>`:''}${p.gh?`<a href="${p.gh}" target="_blank" rel="noopener">GitHub ↗</a>`:''}${p.code?`<small>${p.code}</small>`:''}</div></div><span class="st ${p.s=='No ar'?'live':''}">${p.s=='No ar'?'● ':''}${p.s}</span></div></article>`).join('')+`<div class="pend"><span class="mono">e tem mais</span><h3>Mais código<br>no GitHub.</h3><a href="https://github.com/Chavesz" target="_blank" rel="noopener">github.com/Chavesz ↗</a></div>`;
+const D=P.slice(0,5),A=P.slice(5);$('#ptrack').innerHTML=D.map((p,i)=>`<article class="pc" data-cur="${p.site?'ABRIR':p.gh?'CÓDIGO':'VER'}"><div class="img">${p.img?`<img src="${p.img}" alt="Tela do ${p.t}" loading="lazy">`:`<div class="gen" style="--a:${p.a};--b:${p.b}"><b>${p.t}</b></div>`}</div><div class="body"><span class="idx">${String(i+1).padStart(2,'0')}</span><div><h3>${p.t}</h3><p>${p.d}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="links">${p.site?`<a href="${p.site}" target="_blank" rel="noopener">Ver site ↗</a>`:''}${p.gh?`<a href="${p.gh}" target="_blank" rel="noopener">GitHub ↗</a>`:''}${p.code?`<small>${p.code}</small>`:''}</div></div><span class="st ${p.s=='No ar'?'live':''}">${p.s=='No ar'?'● ':''}${p.s}</span></div></article>`).join('')+`<div class="pend"><span class="mono">e tem mais</span><h3>Veja todos<br>os projetos ↓</h3><a href="#allp">Todos os projetos</a></div>`;
+$('#allp').innerHTML=A.map(p=>`<div class="ap reveal"><span class="tp">${p.s} · ${p.tags.slice(0,3).join(' · ')}</span><h4>${p.t}</h4><p>${p.d}</p>${p.site?`<a href="${p.site}" target="_blank" rel="noopener">Ver site ↗</a>`:p.gh?`<a href="${p.gh}" target="_blank" rel="noopener">Ver no GitHub ↗</a>`:`<small>${p.code||'Código privado'}</small>`}</div>`).join('');
+$('#allc').textContent=P.length+' projetos no total';$('#fproj').textContent=P.length;$('#fcert').textContent=CERT.length;
+const DV={JavaScript:'javascript/javascript-original',TypeScript:'typescript/typescript-original','Vue 3':'vuejs/vuejs-original',React:'react/react-original','Next.js':'nextjs/nextjs-original',Tailwind:'tailwindcss/tailwindcss-original','HTML/CSS':'html5/html5-original','Node.js':'nodejs/nodejs-original',Python:'python/python-original','PHP (MVC)':'php/php-original',C:'c/c-original',PostgreSQL:'postgresql/postgresql-original',Supabase:'supabase/supabase-original',MongoDB:'mongodb/mongodb-original',Redis:'redis/redis-original',Neo4j:'neo4j/neo4j-original',MySQL:'mysql/mysql-original',Vercel:'vercel/vercel-original',Git:'git/git-original',Arduino:'arduino/arduino-original',Pinia:'vuejs/vuejs-original',LoopBack:'nodejs/nodejs-original'};
+$$('.sk li').forEach(li=>{const k=DV[li.textContent.trim()];if(!k)return;const im=new Image();im.alt='';im.loading='lazy';im.onerror=()=>im.style.display='none';im.src='https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/'+k+'.svg';li.prepend(im)});
 $('#certs').innerHTML=CERT.map(c=>{const tag=c.url?'a':'div',at=c.url?` href="${c.url}" target="_blank" rel="noopener" data-cur="VERIFICAR"`:'';return `<${tag}${at} class="ce reveal"><div class="ci">${c.img?`<img src="${c.img}" alt="Certificado ${c.t}" loading="lazy">`:`<div class="seal">${c.i[0]}</div>`}</div><div class="cb"><span class="mono">${c.i} · ${c.y}</span><h4>${c.t}</h4><p>${c.url?'Verificar credencial ↗':c.code?'Credencial '+c.code.slice(0,8)+'…':''}</p></div></${tag}>`}).join('');
 const mw=["Full Stack","Node.js","Vue","React","Next.js","IA aplicada","Supabase","SOLID","MongoDB","TypeScript"];
 $('#mq').innerHTML=[...mw,...mw].map(w=>`<span>${w}</span><i>✦</i>`).join('');
@@ -365,7 +409,7 @@ $$('.reveal').forEach((el,i)=>gsap.from(el,{y:60,opacity:0,duration:1.1,ease:'ex
 gsap.to('#progbar',{width:'92%',duration:2,ease:'expo.out',scrollTrigger:{trigger:'#progbar',start:'top 90%'}});
 // projects horizontal pin (desktop)
 const mm=gsap.matchMedia();
-mm.add('(min-width:701px)',()=>{const tr=$('#ptrack'),cards=$$('.pc'),n=P.length;
+mm.add('(min-width:701px)',()=>{const tr=$('#ptrack'),cards=$$('.pc'),n=cards.length;
  const dist=()=>tr.scrollWidth-innerWidth;
  const tw=gsap.to(tr,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#pw',start:'center center',end:()=>'+='+dist(),pin:true,scrub:1,invalidateOnRefresh:true,anticipatePin:1,onUpdate:s=>{$('#pcount').textContent=String(Math.min(n,Math.floor(s.progress*n)+1)).padStart(2,'0')+' / '+String(n).padStart(2,'0')}}});
  cards.forEach(c=>{const im=c.querySelector('img');if(im)gsap.fromTo(im,{yPercent:-6},{yPercent:0,ease:'none',scrollTrigger:{trigger:c,containerAnimation:tw,start:'left right',end:'right left',scrub:true}})});
