@@ -184,6 +184,18 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
 .ap p{color:var(--mute);font-size:14.5px;flex:1}
 .ap a{font-weight:600;font-size:14px;border-bottom:1px solid var(--acc2);align-self:flex-start}
 .ap small{color:var(--mute);font-size:13px}
+.ig{display:grid;gap:18px}
+.igc{border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3vw,34px);background:var(--s1)}
+.igc header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.igc h3{font-family:Unbounded;font-weight:700;font-size:clamp(20px,2.2vw,28px);letter-spacing:-.03em}
+.igc .st{font:500 11px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.08em;color:var(--acc2)}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0 20px}
+.flow span{font:500 12px 'JetBrains Mono';border:1px solid rgba(196,181,253,.28);border-radius:8px;padding:6px 10px;background:rgba(139,92,246,.08)}
+.flow i{color:var(--acc);font-style:normal}
+.igl{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 28px;list-style:none;padding:0}
+.igl li{color:var(--mute);font-size:14.5px;padding-left:14px;border-left:2px solid var(--acc)}
+.igl b{color:var(--fg,#fff);font-weight:600}
+@media(max-width:700px){.igl{grid-template-columns:1fr}}
 @media(max-width:1000px){.facts{grid-template-columns:1fr 1fr}.job{grid-template-columns:1fr;gap:10px}.allp{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.allp{grid-template-columns:1fr}.fact{padding:20px}}
 @media(max-width:1000px){
@@ -216,7 +228,7 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
 
 <nav class="nav">
  <a class="logo" href="#top">KC.</a>
- <ul><li><a href="#formacao">Formação</a></li><li><a href="#carreira">Carreira</a></li><li><a href="#skills">Skills</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#certificados">Certificados</a></li></ul>
+ <ul><li><a href="#formacao">Formação</a></li><li><a href="#carreira">Carreira</a></li><li><a href="#skills">Skills</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#integracoes">Integrações</a></li><li><a href="#certificados">Certificados</a></li></ul>
  <a class="cta" href="#contato">Contato</a>
 </nav>
 
@@ -285,13 +297,24 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
  <div class="wrap"><div class="subh"><h3>Todos os projetos</h3><span class="mono" id="allc"></span></div><div class="allp" id="allp"></div></div>
 </section>
 
+<section class="sec" id="integracoes" style="padding-top:0"><div class="wrap">
+ <div class="sh"><span class="mono">(06) — integrações</span><h2 class="split"><span class="ln"><span>Integrações</span></span><span class="ln"><span><em>e arquitetura.</em></span></span></h2></div>
+ <div class="ig">
+  <article class="igc reveal"><header><h3>Radar</h3><span class="st">Next.js · Supabase</span></header><div class="flow"><span>Usuário</span><i>→</i><span>Next.js</span><i>→</i><span>Google Places</span><i>→</i><span>IA + Pexels</span><i>→</i><span>Supabase</span></div><ul class="igl"><li><b>Pagamentos:</b> assinaturas com Stripe e Mercado Pago, gateway escolhido por configuração</li><li><b>Webhooks:</b> rotas de Stripe e Mercado Pago com verificação de assinatura atualizam o plano</li><li><b>WhatsApp:</b> Evolution API: envio de mensagens e agente que responde pelo webhook</li><li><b>Google Places:</b> busca de negócios locais, detalhes e fotos</li><li><b>IA em cascata:</b> Gemini → Groq → OpenRouter → Cloudflare Workers AI, com fallback automático</li><li><b>Imagens:</b> geração com Cloudflare Workers AI e fotos do Pexels</li><li><b>Supabase:</b> Auth, RLS e Storage</li></ul></article>
+  <article class="igc reveal"><header><h3>Aprovô</h3><span class="st">React · Netlify Functions</span></header><div class="flow"><span>Usuário</span><i>→</i><span>React (SPA)</span><i>→</i><span>Netlify Functions</span><i>→</i><span>Supabase</span></div><ul class="igl"><li><b>Pagamentos:</b> assinatura com Mercado Pago</li><li><b>Webhook:</b> valida a assinatura do Mercado Pago e libera o acesso</li><li><b>E-mail:</b> Resend para e-mails transacionais</li><li><b>Tarefas agendadas:</b> alerta semanal de concursos e lembrete diário de revisão</li><li><b>IA:</b> mentor e explicações de questões</li><li><b>Supabase:</b> Auth, dados e RLS</li></ul></article>
+  <article class="igc reveal"><header><h3>Agendaê e Pedeaí</h3><span class="st">Next.js · Supabase</span></header><div class="flow"><span>Cliente</span><i>→</i><span>Next.js</span><i>→</i><span>Supabase</span><i>→</i><span>Evolution API</span></div><ul class="igl"><li><b>Pagamentos:</b> assinaturas com Stripe e Mercado Pago e webhooks verificados</li><li><b>WhatsApp:</b> lembretes e notificações via Evolution API</li><li><b>IA:</b> Pedeaí monta cardápio com IA e fotos do Pexels</li><li><b>Storage:</b> fotos dos pratos no Supabase Storage</li></ul></article>
+  <article class="igc reveal"><header><h3>FitFlow</h3><span class="st">Next.js · Supabase</span></header><div class="flow"><span>Aluno</span><i>→</i><span>Matrícula</span><i>→</i><span>Mercado Pago</span><i>→</i><span>Supabase</span></div><ul class="igl"><li><b>Pagamentos:</b> checkout de matrícula com Mercado Pago e confirmação do pagamento</li><li><b>IA:</b> montagem de treinos com Gemini, com Groq e OpenRouter de reserva</li></ul></article>
+  <article class="igc reveal"><header><h3>Telemedicina Poliglota</h3><span class="st">Python · Streamlit</span></header><div class="flow"><span>Streamlit</span><i>→</i><span>MongoDB</span><i>→</i><span>Redis</span><i>→</i><span>Neo4j</span></div><ul class="igl"><li><b>MongoDB:</b> prontuários flexíveis, laudos e agenda</li><li><b>Redis:</b> sessão com TTL, fila de espera por prioridade (Sorted Set) e cache</li><li><b>Neo4j:</b> grafo de diagnósticos e interação entre medicamentos</li></ul></article>
+ </div>
+</div></section>
+
 <section class="sec" id="certificados"><div class="wrap">
- <div class="sh"><span class="mono">(06) — certificados</span><h2 class="split"><span class="ln"><span>Formação</span></span><span class="ln"><span><em>comprovada.</em></span></span></h2></div>
+ <div class="sh"><span class="mono">(07) — certificados</span><h2 class="split"><span class="ln"><span>Formação</span></span><span class="ln"><span><em>comprovada.</em></span></span></h2></div>
  <div class="certs" id="certs"></div>
 </div></section>
 
 <section class="contact" id="contato"><div class="wrap">
- <span class="mono">(07) — contato</span>
+ <span class="mono">(08) — contato</span>
  <h2 class="big split" style="margin-top:24px"><span class="ln"><span>Bora</span></span><span class="ln"><span><em>construir?</em></span></span></h2>
  <button class="mailbtn mag" id="copy" data-cur="COPIAR">kauachaves50@gmail.com <small>COPIAR</small></button>
  <div class="socials"><a class="mag" href="https://www.linkedin.com/in/kau%C3%A3-chaves-42879b263/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="mag" href="https://github.com/Chavesz" target="_blank" rel="noopener">GitHub ↗</a></div>
